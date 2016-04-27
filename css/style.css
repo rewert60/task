@@ -1,0 +1,18 @@
+#form{
+    width: 300px;    
+    margin: auto;
+    margin-top: 10%;
+    background-color: #F5F5F5;
+    padding: 20px;
+}
+#year{
+    width: 60px;
+}
+.count{
+    width: 200px;    
+    margin: auto;
+    margin-top: 10%;
+    background-color: #F5F5F5;
+    padding: 40px;
+    padding-top: 0;
+}
