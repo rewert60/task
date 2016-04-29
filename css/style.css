@@ -6,7 +6,13 @@
     padding: 20px;
 }
 #year{
-    width: 60px;
+    width: 60px;    
+}
+#mounth{
+    width: 70px;    
+}
+#day{
+    width: 60px;    
 }
 .count{
     width: 200px;    
@@ -15,4 +21,10 @@
     background-color: #F5F5F5;
     padding: 40px;
     padding-top: 0;
+}
+.login{
+    font-size: 10px; 
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
 }

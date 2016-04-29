@@ -1,35 +1,33 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");    
 require('include/func.inc.php');
-$link = mysqli_connect('localhost', 'root', '', 'task');
-$error = 1;
+require('include/visit.inc.php');
+require('include/db.inc.php');
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $login = filter($_POST['login']);
-        if($login != ''){
+        if($login != '' and preg_match("/^[A-Za-z0-9_-]{3,16}$/",$login)){
             $login_query = mysqli_query($link, "SELECT login FROM users WHERE login='$login'");
             $login_query = mysqli_fetch_array($login_query);
             if($login_query == ''){
-                $err = "Неверный логин или пароль";
-                $error = 0;
+                $err = "Неверный логин или пароль";                
             }
         }else{
-            $err = "Введите логин и пароль";
-            $error = 0;
+            $err = "Введите логин и пароль";            
         }
         
         $pass = filter($_POST['pass']);
-        if($pass != ''){
-            $pass_query = mysqli_query($link, "SELECT password FROM users WHERE password='$pass'");
+        if($pass != '' and preg_match("/^[A-Za-z0-9_-]{3,16}$/",$pass)){
+            $pass = md5(strrev($pass));
+            $pass_query = mysqli_query($link, "SELECT password FROM users WHERE password='$pass'");            
             $pass_query = mysqli_fetch_array($pass_query);
             if($pass_query == ''){
-                $err = "Неверный логин или пароль";
-                $error = 0;
+                $err = "Неверный логин или пароль";                
             }
         }else{
-            $err = "Введите логин и пароль";
-            $error = 0;
+            $err = "Введите логин и пароль";            
         }
-        if($error == 1){        
+        if(!$err){        
             session_start();
             $id = mysqli_query($link, "SELECT id FROM users WHERE login='$login'");
             $row = mysqli_fetch_array($id);
@@ -53,7 +51,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </head>
 
 <body>
+<pre>
+visitors: <?=$visitors?> 
+  visits: <?=$visit_sum[0]?>
 
+</pre>
 <div id="form">
 <form action="index.php" method="POST" role="form">
   <p class="help-block"><?=$err?></p>

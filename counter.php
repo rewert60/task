@@ -2,22 +2,25 @@
 session_start();
 
 if($_SESSION['auth'] == 1){
-    $link = mysqli_connect('localhost', 'root', '', 'task');
+    require('include/db.inc.php');
     
     if($_GET['action'] == 'logout'){
         session_start();
         session_destroy();
         header("Location: http://".$_SERVER['HTTP_HOST']."/");
+        exit;
     }
     $id = $_SESSION['id'];
     if($_GET['action'] == 'plus'){
         $query = mysqli_query($link, "UPDATE users SET counter=counter+1 WHERE id=$id");        
     }
     $count = mysqli_query($link, "SELECT counter FROM users WHERE id=$id");
+    echo mysqli_error($link);
     $count = mysqli_fetch_array($count);    
     }else{
         session_destroy();
         header("Location: http://".$_SERVER['HTTP_HOST']."/");
+        exit;
 }
 ?>
 <!DOCTYPE HTML>
