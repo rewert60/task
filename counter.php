@@ -12,7 +12,9 @@ if($_SESSION['auth'] == 1){
     }
     $id = $_SESSION['id'];
     if($_GET['action'] == 'plus'){
-        $query = mysqli_query($link, "UPDATE users SET counter=counter+1 WHERE id=$id");        
+        $query = mysqli_query($link, "UPDATE users SET counter=counter+1 WHERE id=$id");
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit;
     }
     $count = mysqli_query($link, "SELECT counter FROM users WHERE id=$id");
     echo mysqli_error($link);
