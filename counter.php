@@ -36,7 +36,7 @@ if($_SESSION['auth'] == 1){
 
 <body>
 <div class="count">
-    <h1 style="font-size: 4em; margin-left: 40px;"><?=$count['counter']?></h1>
+    <h1 style="font-size: 4em; text-align: center;"><?=$count['counter']?></h1>
     <a style="margin-right: 20px;" href='counter.php?action=plus' class="btn btn-success">+1</a>
     <a href='counter.php?action=logout'>Logout</a>
 </div>
