@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
-require('include/func.inc.php');
 require('include/db.inc.php');
+require('include/func.inc.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
