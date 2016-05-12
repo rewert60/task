@@ -1,8 +1,8 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");    
+header("Content-Type: text/html; charset=utf-8");
+require('include/db.inc.php');
 require('include/func.inc.php');
 require('include/visit.inc.php');
-require('include/db.inc.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $login = filter($_POST['login']);
