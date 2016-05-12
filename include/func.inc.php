@@ -1,5 +1,6 @@
 <?php
 function filter($str){
-    return $str = trim(strip_tags($str));
+    global $link;
+    return misqli_real_escape_string($link, trim(strip_tags($str)));
 }
 ?>
