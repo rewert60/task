@@ -78,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($error == 1){
         $bday = $day."-".$mounth."-".$year;
         $pass = md5(strrev($pass));
-        $insert = mysqli_query($link, "INSERT INTO users (login, password, bday) VALUES ('$login', '$pass', '$bday')");
+        mysqli_query($link, "INSERT INTO users (login, password, bday) VALUES ('$login', '$pass', '$bday')") or die(mysqli_error($link));
         session_start();
         $id = mysqli_query($link, "SELECT id FROM users WHERE login='$login'");
         $row = mysqli_fetch_array($id);
