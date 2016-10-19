@@ -1,5 +1,5 @@
-# task
-The task of the user Fell-x27 from the php.ru
+# Задание
+Задание от пользователя Fell-x27 с форума php.ru
 
 https://php.ru/forum/threads/kak-bystro-osvoit-php.52331/#p419213
 
